@@ -1,4 +1,4 @@
-# rendez-Vous server library written in Go
+# Rendez-Vous server library written in Go
 
 [![GoDoc](https://godoc.org/github.com/Link-3DS/Rendez-Vous?status.svg)](https://godoc.org/github.com/Link-3DS/Rendez-Vous)
 
