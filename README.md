@@ -1,10 +1,10 @@
-# Barebones PRUDP/NEX server library written in Go
+# rendez-Vous server library written in Go
 
-[![GoDoc](https://godoc.org/github.com/PretendoNetwork/nex-go?status.svg)](https://godoc.org/github.com/PretendoNetwork/nex-go)
+[![GoDoc](https://godoc.org/github.com/Link-3DS/Rendez-Vous?status.svg)](https://godoc.org/github.com/Link-3DS/Rendez-Vous)
 
 ### Install
 
-`go get github.com/PretendoNetwork/nex-go`
+`go get github.com/Link-3DS/Rendez-Vous`
 
 ### Usage note
 
@@ -18,25 +18,20 @@ package main
 import (
 	"fmt"
 
-	nex "github.com/PretendoNetwork/nex-go"
+	nex "github.com/Link-3DS/Rendez-Vous"
 )
 
 func main() {
-	nexServer := nex.NewServer()
-	nexServer.SetPrudpVersion(0)
-	nexServer.SetSignatureVersion(1)
-	nexServer.SetKerberosKeySize(16)
-	nexServer.SetAccessKey("ridfebb9")
+	server := nex.NewServer() // Handle Server
+	server.SetPrudpVersion(0) // PRUDP Version
+	server.SetSignatureVersion(1) // Signature Version
+	server.SetKerberosKeySize(16) // Kerberos Key Size
+	server.SetAccessKey("ridfebb9") // Access Key
 
-	nexServer.On("Data", func(packet *nex.PacketV0) {
-		request := packet.RMCRequest()
-
-		fmt.Println("==Friends - Auth==")
-		fmt.Printf("Protocol ID: %#v\n", request.ProtocolID())
-		fmt.Printf("Method ID: %#v\n", request.MethodID())
-		fmt.Println("==================")
+	server.On("Data", func(packet *nex.PacketV0) {
+		// Handle Data Packet
 	})
 
-	nexServer.Listen(":60000")
+	server.Listen(":60000") // Listen UDP
 }
 ```

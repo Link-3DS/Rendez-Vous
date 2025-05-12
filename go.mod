@@ -1,4 +1,4 @@
-module github.com/PretendoNetwork/nex-go
+module github.com/Link-3DS/Rendez-Vous
 
 go 1.18
 
